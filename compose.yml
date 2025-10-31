@@ -1,5 +1,5 @@
 services:
-  development:
+  fcp-sfd-performance-test-suite:
     build: .
     volumes:
       - ./reports:/opt/perftest/reports
