@@ -39,7 +39,6 @@ This brings up:
 
 * `development`: the container that runs your performance tests
 * `localstack`: simulates AWS S3, SNS, SQS, etc.
-* `redis`: backing service for cache
 * `service`: the application under test
 
 Once all services are healthy, your performance tests will automatically start.
