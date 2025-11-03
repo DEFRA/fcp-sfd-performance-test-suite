@@ -17,7 +17,7 @@ The CDP Platform runs test suites in much the same way it runs any other service
 
 ## Local Testing with Docker Compose
 
-You can run the entire performance test stack locally using Docker Compose, including LocalStack, Redis, and the target service. This is useful for development, integration testing, or verifying your test scripts **before committing to `main`**, which will trigger GitHub Actions to build and publish the Docker image.
+You can run the entire performance test stack locally using Docker Compose, including LocalStack, and the target service. This is useful for development, integration testing, or verifying your test scripts **before committing to `main`**, which will trigger GitHub Actions to build and publish the Docker image.
 
 ### Build the Docker image
 
@@ -39,7 +39,6 @@ This brings up:
 
 * `development`: the container that runs your performance tests
 * `localstack`: simulates AWS S3, SNS, SQS, etc.
-* `redis`: backing service for cache
 * `service`: the application under test
 
 Once all services are healthy, your performance tests will automatically start.

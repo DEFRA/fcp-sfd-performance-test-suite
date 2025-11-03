@@ -42,14 +42,6 @@ services:
     networks:
       - performance-tests
 
-  redis:
-    image: redis:7.2.3-alpine3.18
-    ports:
-      - '6379:6379'
-    restart: always
-    networks:
-      - performance-tests
-
   service:
     # replace service-name with the name of your service being performace tested
     image: defradigital/fcp-sfd-comms:${SERVICE_VERSION:-latest}
@@ -57,7 +49,6 @@ services:
       - '3000:3000'
     links:
       - 'localstack:localstack'
-      - 'redis:redis'
     depends_on:
       localstack:
         condition: service_healthy
@@ -66,7 +57,6 @@ services:
     environment:
       PORT: 3000
       NODE_ENV: development
-      REDIS_HOST: redis
       USE_SINGLE_INSTANCE_CACHE: true
     healthcheck:
       test: ['CMD', 'curl', 'localhost:3000/health']
