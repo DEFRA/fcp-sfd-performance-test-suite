@@ -7,6 +7,7 @@ services:
       - '9999:9229'
     volumes:
       - ./reports:/opt/perftest/reports
+      - ./logs:/opt/perftest/logs
     networks:
       - fcp-sfd
 

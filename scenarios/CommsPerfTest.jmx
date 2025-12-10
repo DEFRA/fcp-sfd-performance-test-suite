@@ -63,7 +63,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables - Scripted" enabled="false">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables - Scripted" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="protocol" elementType="Argument">
             <stringProp name="Argument.name">protocol</stringProp>
@@ -83,7 +83,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables - Local Testing">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables - Local Testing" enabled="false">
         <collectionProp name="Arguments.arguments">
           <elementProp name="validPercent" elementType="Argument">
             <stringProp name="Argument.name">validPercent</stringProp>
@@ -206,8 +206,6 @@
       <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="StubHealthcheck" enabled="true">
           <stringProp name="TestPlan.comments">Before running the suite, replace &apos;service-name&apos; the name/url of the service to test. $env is set to the name of th environment the test is running in.</stringProp>
-          <stringProp name="HTTPSampler.proxyHost">127.0.0.1</stringProp>
-          <intProp name="HTTPSampler.proxyPort">9000</intProp>
           <intProp name="HTTPSampler.connect_timeout">1000</intProp>
           <intProp name="HTTPSampler.response_timeout">1000</intProp>
           <stringProp name="HTTPSampler.domain">${host}</stringProp>
@@ -297,8 +295,6 @@ if (prevResult.isSuccessful()) {
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CommRequest">
             <stringProp name="TestPlan.comments">Before running the suite, replace &apos;service-name&apos; the name/url of the service to test. $env is set to the name of th environment the test is running in.</stringProp>
-            <stringProp name="HTTPSampler.proxyHost">127.0.0.1</stringProp>
-            <intProp name="HTTPSampler.proxyPort">9000</intProp>
             <intProp name="HTTPSampler.connect_timeout">1000</intProp>
             <intProp name="HTTPSampler.response_timeout">1000</intProp>
             <stringProp name="HTTPSampler.domain">${host}</stringProp>
@@ -372,8 +368,6 @@ if (prevResult.isSuccessful()) {
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CommRequest-TempFail" enabled="true">
             <stringProp name="TestPlan.comments">Before running the suite, replace &apos;service-name&apos; the name/url of the service to test. $env is set to the name of th environment the test is running in.</stringProp>
-            <stringProp name="HTTPSampler.proxyHost">127.0.0.1</stringProp>
-            <intProp name="HTTPSampler.proxyPort">9000</intProp>
             <intProp name="HTTPSampler.connect_timeout">1000</intProp>
             <intProp name="HTTPSampler.response_timeout">1000</intProp>
             <stringProp name="HTTPSampler.domain">${host}</stringProp>
@@ -447,8 +441,6 @@ if (prevResult.isSuccessful()) {
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CommRequest-PermFail" enabled="true">
             <stringProp name="TestPlan.comments">Before running the suite, replace &apos;service-name&apos; the name/url of the service to test. $env is set to the name of th environment the test is running in.</stringProp>
-            <stringProp name="HTTPSampler.proxyHost">127.0.0.1</stringProp>
-            <intProp name="HTTPSampler.proxyPort">9000</intProp>
             <intProp name="HTTPSampler.connect_timeout">1000</intProp>
             <intProp name="HTTPSampler.response_timeout">1000</intProp>
             <stringProp name="HTTPSampler.domain">${host}</stringProp>
