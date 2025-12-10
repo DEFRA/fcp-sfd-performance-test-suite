@@ -72,7 +72,7 @@
           </elementProp>
           <elementProp name="host" elementType="Argument">
             <stringProp name="Argument.name">host</stringProp>
-            <stringProp name="Argument.value">${__P(domain, service-name.${__P(env)}.cdp-int.defra.cloud)}</stringProp>
+            <stringProp name="Argument.value">${__P(domain, fcp-sfd-comms-publisher-stub.${__P(env)}.cdp-int.defra.cloud)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="port" elementType="Argument">
