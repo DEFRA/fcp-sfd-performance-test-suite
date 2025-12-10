@@ -12,9 +12,14 @@ services:
       S3_ENDPOINT: 'http://localstack:4566'
       RESULTS_OUTPUT_S3_PATH: 's3://test-results'
       ENVIRONMENT: local
-      SERVICE_ENDPOINT: localhost
-      SERVICE_PORT: 3000
+      SERVICE_ENDPOINT: fcp-sfd-comms-publisher-stub
+      SERVICE_PORT: 3008
       SERVICE_URL_SCHEME: http
+      TEST_SCENARIO: CommsPerfTest
+      LOOP_COUNT: 1000
+      DURATION_SECONDS: 300
+      THREAD_COUNT: 1
+      RAMPUP_SECONDS: 30
 
   localstack:
     image: localstack/localstack:4.11.1
