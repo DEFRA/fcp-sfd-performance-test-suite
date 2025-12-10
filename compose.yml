@@ -1,10 +1,10 @@
 services:
   fcp-sfd-performance-test-suite:
     build: .
-    volumes:
-      - ./reports:/opt/perftest/reports
+    image: fcp-sfd-performance-test-suite-development
+    container_name: fcp-sfd-performance-test-suite-development
     depends_on:
-      service:
+      localstack:
         condition: service_healthy
     env_file:
       - 'compose/aws.env'
@@ -12,18 +12,17 @@ services:
       S3_ENDPOINT: 'http://localstack:4566'
       RESULTS_OUTPUT_S3_PATH: 's3://test-results'
       ENVIRONMENT: local
-      SERVICE_ENDPOINT: localhost
-      SERVICE_PORT: 3000
+      SERVICE_ENDPOINT: fcp-sfd-comms-publisher-stub
+      SERVICE_PORT: 3008
       SERVICE_URL_SCHEME: http
-    networks:
-      - performance-tests
+      TEST_SCENARIO: CommsPerfTest
+      LOOP_COUNT: 1000
+      DURATION_SECONDS: 300
+      THREAD_COUNT: 1
+      RAMPUP_SECONDS: 30
 
   localstack:
-    image: localstack/localstack:4.3.0
-    ports:
-      - '4566:4566' # LocalStack Gateway
-      - '4510-4559:4510-4559' # external services port range
-    restart: always
+    image: localstack/localstack:4.11.1
     env_file:
       - 'compose/aws.env'
     environment:
@@ -31,42 +30,11 @@ services:
       LS_LOG: WARN # Localstack DEBUG Level
       SERVICES: s3, sqs, sns
       LOCALSTACK_HOST: 127.0.0.1
-    volumes:
-      - '${TMPDIR:-/tmp}/localstack:/var/lib/localstack'
-      - ./compose/localstack:/etc/localstack/init/ready.d
     healthcheck:
-      test: [ "CMD", "stat", "/tmp/READY" ]
-      interval: 3s
-      start_period: 5s
-      retries: 3
-    networks:
-      - performance-tests
-
-  service:
-    # replace service-name with the name of your service being performace tested
-    image: defradigital/fcp-sfd-comms:${SERVICE_VERSION:-latest}
-    ports:
-      - '3000:3000'
-    links:
-      - 'localstack:localstack'
-    depends_on:
-      localstack:
-        condition: service_healthy
-    env_file:
-      - 'compose/aws.env'
-    environment:
-      PORT: 3000
-      NODE_ENV: development
-      USE_SINGLE_INSTANCE_CACHE: true
-    healthcheck:
-      test: ['CMD', 'curl', 'localhost:3000/health']
+      test: ["CMD", "curl", "-f", "http://localhost:4566/_localstack/health"]
       interval: 5s
-      start_period: 5s
-      retries: 3
-    networks:
-      - performance-tests
+      timeout: 10s
+      start_period: 10s
+      retries: 5
 
-networks:
-  performance-tests:
-    driver: bridge
 
