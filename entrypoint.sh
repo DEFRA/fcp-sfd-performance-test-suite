@@ -47,13 +47,6 @@ jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -o ${JM_REPORTS} -j ${LOGFILE
 -JDURATION_SECONDS="${DURATION_SECONDS}" \
 -JLOOP_COUNT="${LOOP_COUNT}"
 
-
-# list content of reports directory and echo
-search_dir="${JM_REPORTS}"
-for entry in "$search_dir"/*
-do
-  echo "$entry"
-done
 # Publish the results into S3 so they can be displayed in the CDP Portal
 if [ -n "$RESULTS_OUTPUT_S3_PATH" ]; then
   # Copy the CSV report file and the generated report files to the S3 bucket
