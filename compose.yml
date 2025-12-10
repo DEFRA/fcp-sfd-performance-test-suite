@@ -17,7 +17,7 @@ services:
       SERVICE_URL_SCHEME: http
 
   localstack:
-    image: localstack/localstack:3.0.2
+    image: localstack/localstack:4.11.1
     env_file:
       - 'compose/aws.env'
     environment:
