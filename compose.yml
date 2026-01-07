@@ -15,13 +15,14 @@ services:
       SERVICE_ENDPOINT: fcp-sfd-comms-publisher-stub
       SECONDARY_SERVICE_ENDPOINT: fcp-sfd-comms
       SERVICE_PORT: 3008
-      SECONDARY_SERVICE_PORT: 3000
+      SECONDARY_SERVICE_PORT: 3001
       SERVICE_URL_SCHEME: http
       TEST_SCENARIO: CommsPerfTest
       LOOP_COUNT: 1000
       DURATION_SECONDS: 300
       THREAD_COUNT: 1
       RAMPUP_SECONDS: 30
+      PERFORMANCE_TEST_SUITE_API_KEY: test
 
   localstack:
     image: localstack/localstack:4.11.1
