@@ -28,8 +28,10 @@ LOGFILE=${JM_LOGS}/perftest-${TEST_SCENARIO}.log
 # Before running the suite, replace 'service-name' with the name/url of the service to test.
 # ENVIRONMENT is set to the name of th environment the test is running in.
 SERVICE_ENDPOINT=${SERVICE_ENDPOINT:-fcp-sfd-comms-publisher-stub.${ENVIRONMENT}.cdp-int.defra.cloud}
+SECONDARY_SERVICE_ENDPOINT=${SECONDARY_SERVICE_ENDPOINT:-fcp-sfd-comms.${ENVIRONMENT}.cdp-int.defra.cloud}
 # PORT is used to set the port of this performance test container
 SERVICE_PORT=${SERVICE_PORT:-443}
+SECONDARY_SERVICE_PORT=${SECONDARY_SERVICE_PORT:-443}
 SERVICE_URL_SCHEME=${SERVICE_URL_SCHEME:-https}
 LOOP_COUNT=${LOOP_COUNT:-100}
 DURATION_SECONDS=${DURATION_SECONDS:-300}
@@ -40,7 +42,9 @@ RAMPUP_SECONDS=${RAMPUP_SECONDS:-30}
 jmeter -n -t ${SCENARIOFILE} -e -l "${REPORTFILE}" -o ${JM_REPORTS} -j ${LOGFILE} \
 -Jenv="${ENVIRONMENT}" \
 -Jdomain="${SERVICE_ENDPOINT}" \
+-JsecondaryDomain="${SECONDARY_SERVICE_ENDPOINT}" \
 -Jport="${SERVICE_PORT}" \
+-JsecondaryPort="${SECONDARY_SERVICE_PORT}" \
 -Jprotocol="${SERVICE_URL_SCHEME}" \
 -JRAMPUP_SECONDS="${RAMPUP_SECONDS}" \
 -JTHREAD_COUNT="${THREAD_COUNT}" \
@@ -65,5 +69,6 @@ else
    exit 1
 fi
 
-echo "Test execution completed with exit code $?"
-exit 0
+exit_code=$?
+echo "Test execution completed with exit code $exit_code"
+exit $exit_code

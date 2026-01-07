@@ -13,7 +13,9 @@ services:
       RESULTS_OUTPUT_S3_PATH: 's3://test-results'
       ENVIRONMENT: local
       SERVICE_ENDPOINT: fcp-sfd-comms-publisher-stub
+      SECONDARY_SERVICE_ENDPOINT: fcp-sfd-comms
       SERVICE_PORT: 3008
+      SECONDARY_SERVICE_PORT: 3000
       SERVICE_URL_SCHEME: http
       TEST_SCENARIO: CommsPerfTest
       LOOP_COUNT: 1000
