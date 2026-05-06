@@ -22,7 +22,7 @@ services:
       RAMPUP_SECONDS: 30
 
   localstack:
-    image: localstack/localstack:4.11.1
+    image: localstack/localstack:4.14.0
     env_file:
       - 'compose/aws.env'
     environment:
